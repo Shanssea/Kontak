@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
@@ -26,11 +28,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+
     private ListView lv;
     private ImageView add;
     private kontakAdapter kAdapter;
+
     private SQLiteDatabase dbku;
     private SQLiteOpenHelper dbopen;
+
     ArrayList<kontak> listKontak = new ArrayList<>();
 
     @Override
