@@ -32,13 +32,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lv = (ListView) findViewById(R.id.listView);
-        add = (ImageView) findViewById(R.id.add);
+        lv = findViewById(R.id.listView);
+        add = findViewById(R.id.add);
         add.setOnClickListener(operasi);
         lv.setOnItemClickListener(this);
 
 //        ArrayList<kontak> listKontak = new ArrayList<kontak>();
-        ArrayList<kontak> listKontak = new ArrayList<kontak>();
+        ArrayList<kontak> listKontak = new ArrayList<>();
         kAdapter = new kontakAdapter(this,0,listKontak);
         lv.setAdapter(kAdapter);
 
@@ -85,8 +85,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         buat.setTitle("Tambah Kontak");
 
         View vAdd = LayoutInflater.from(this).inflate(R.layout.add_kontak,null);
-        final EditText nm = (EditText) vAdd.findViewById(R.id.nm);
-        final EditText hp = (EditText) vAdd.findViewById(R.id.hp);
+        final EditText nm = vAdd.findViewById(R.id.nm);
+        final EditText hp = vAdd.findViewById(R.id.hp);
 
         buat.setView(vAdd);
 
@@ -128,7 +128,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             i++;
         }
     }
-
 
 //    private void delete_kontak(long id){
 //        String string =String.valueOf(id);

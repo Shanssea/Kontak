@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="30dp"
+    android:columnCount="5">
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:columnCount="5"
-        android:paddingHorizontal="10dp">
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_baseline_person_24"
+        android:layout_columnWeight="1"
+        android:contentDescription="profile"/>
 
-        <ImageView
-            android:id="@+id/img"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_baseline_person_24"
-            android:layout_columnWeight="1"/>
+    <TextView
+        android:id="@+id/tNama"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="Nama"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:layout_columnWeight="2"/>
 
-        <TextView
-            android:id="@+id/tNama"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/img"
-            android:text="Nama"
-            android:textSize="20dp"
-            android:gravity="center_vertical"
-            android:layout_columnWeight="4"/>
-
-
-
-    </GridLayout>
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tnohp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="No Hp"
+        android:textSize="20sp"
+        android:layout_columnWeight="2"/>
+</GridLayout>
