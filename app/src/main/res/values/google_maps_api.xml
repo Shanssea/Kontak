@@ -4,12 +4,12 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=2F:98:7E:3A:DB:DE:09:F1:B2:89:B0:69:8B:67:96:6C:31:11:78:0C%3Bcom.example.maps_learning
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=2F:98:7E:3A:DB:DE:09:F1:B2:89:B0:69:8B:67:96:6C:31:11:78:0C;com.example.kontak
 
     You can also add your credentials to an existing key, using these values:
 
     Package name:
-    com.example.maps_learning
+    com.example.kontak
 
     SHA-1 certificate fingerprint:
     2F:98:7E:3A:DB:DE:09:F1:B2:89:B0:69:8B:67:96:6C:31:11:78:0C

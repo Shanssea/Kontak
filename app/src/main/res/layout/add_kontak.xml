@@ -25,20 +25,38 @@
         android:layout_toRightOf="@+id/imgadd"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="30dp"/>
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No HP"
-        android:textSize="20dp"
-        android:id="@+id/thp"
-        android:layout_below="@+id/nm"
-        android:layout_toRightOf="@+id/imgadd"/>
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="No HP"
+    android:textSize="20dp"
+    android:id="@+id/thp"
+    android:layout_below="@+id/nm"
+    android:layout_toRightOf="@+id/imgadd"/>
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/hp"
         android:layout_toRightOf="@+id/imgadd"
         android:layout_below="@+id/thp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alamat"
+        android:textSize="20dp"
+        android:id="@+id/talamat"
+        android:layout_below="@+id/hp"
+        android:layout_toRightOf="@+id/imgadd"/>
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/alamat"
+        android:layout_toRightOf="@+id/imgadd"
+        android:layout_below="@+id/talamat"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="30dp"/>
 </RelativeLayout>

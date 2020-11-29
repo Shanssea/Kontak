@@ -16,7 +16,7 @@ import java.util.List;
 
 public class kontakAdapter extends ArrayAdapter {
     private static class ViewHolder{
-        TextView nama; TextView nohp;
+        TextView nama; TextView nohp; TextView alamat;
     }
 
     public kontakAdapter(@NonNull Context context, int resource, @NonNull List<kontak> objects) {
@@ -32,6 +32,7 @@ public class kontakAdapter extends ArrayAdapter {
                     inflate(R.layout.item_user,parent,false);
             viewKontak.nama = (TextView) ConvertView.findViewById(R.id.tNama);
 //            viewKontak.nohp = (TextView) ConvertView.findViewById(R.id.tnohp);
+//            viewKontak.nohp = (TextView) ConvertView.findViewById(R.id.talamat);
 
             ConvertView.setTag(viewKontak);
 
@@ -41,12 +42,14 @@ public class kontakAdapter extends ArrayAdapter {
         }
         viewKontak.nama.setText(dtkontak.getNama());
 //        viewKontak.nohp.setText(dtkontak.getNohp());
+//        viewKontak.nohp.setText(dtkontak.getAlamat());
         return ConvertView;
     }
 
-    public void getInfo (int position){
-        kontak dtkontak = (kontak) getItem(position);
-        String kontakInfo = dtkontak.toString();
-        String kontakId = kontakInfo.substring(0, kontakInfo .indexOf(" "));
-    }
+
+//    public void getInfo (int position){
+//        kontak dtkontak = (kontak) getItem(position);
+//        String kontakInfo = dtkontak.toString();
+//        String kontakId = kontakInfo.substring(0, kontakInfo .indexOf(" "));
+//    }
 }

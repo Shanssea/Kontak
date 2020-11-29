@@ -3,6 +3,7 @@ package com.example.kontak;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.LauncherActivity;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,6 +22,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView lv;
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private kontakAdapter kAdapter;
     private SQLiteDatabase dbku;
     private SQLiteOpenHelper dbopen;
+    ArrayList<kontak> listKontak = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +43,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         add.setOnClickListener(operasi);
         lv.setOnItemClickListener(this);
 
-//        ArrayList<kontak> listKontak = new ArrayList<kontak>();
-        ArrayList<kontak> listKontak = new ArrayList<>();
+
         kAdapter = new kontakAdapter(this,0,listKontak);
         lv.setAdapter(kAdapter);
 
@@ -69,17 +73,30 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent detail = new Intent(view.getContext(), DetailActivity.class);
-        startActivityForResult(detail, 0);
+        kontak clickedKontak = listKontak.get(position);
+        String itemNama = clickedKontak.getNama();
+        String itemHp = clickedKontak.getNohp();
+        String itemAlamat = clickedKontak.getAlamat();
+
+//        Toast.makeText(getApplication(),itemNama+itemAlamat+itemHp, Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(getApplicationContext(), SingleActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("Nama", itemNama);
+        extras.putString("Hp", itemHp);
+        extras.putString("Alamat", itemAlamat);
+        intent.putExtras(extras);
+        startActivity(intent);
 
     }
 
-    private void add_item(String nm, String hp){
+    private void add_item(String nm, String hp, String alamat){
         ContentValues datanya = new ContentValues();
         datanya.put("nama",nm);
         datanya.put("nohp",hp);
+        datanya.put("alamat",alamat);
         dbku.insert("kontak",null,datanya);
-        kontak newKontak = new kontak(nm,hp);
+        kontak newKontak = new kontak(nm,hp,alamat);
         kAdapter.add(newKontak);
     }
 
@@ -90,13 +107,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         View vAdd = LayoutInflater.from(this).inflate(R.layout.add_kontak,null);
         final EditText nm = vAdd.findViewById(R.id.nm);
         final EditText hp = vAdd.findViewById(R.id.hp);
+        final EditText alamat = vAdd.findViewById(R.id.alamat);
 
         buat.setView(vAdd);
 
         buat.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                add_item(nm.getText().toString(), hp.getText().toString());
+                add_item(nm.getText().toString(), hp.getText().toString(), alamat.getText().toString());
                 Toast.makeText(getBaseContext(),"Data Tersimpan", Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
@@ -111,8 +129,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         buat.show();
     }
 
-    private void insertKontak(String nm, String hp){
-        kontak newKontak = new kontak(nm, hp);
+    private void insertKontak(String nm, String hp, String alamat){
+        kontak newKontak = new kontak(nm, hp, alamat);
         kAdapter.add(newKontak);
     }
 
@@ -126,7 +144,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         while (i<cur.getCount()){
             insertKontak(cur.getString(cur.getColumnIndex("nama")),
-                    cur.getString(cur.getColumnIndex("nohp")));
+                    cur.getString(cur.getColumnIndex("nohp")),
+                    cur.getString(cur.getColumnIndex("alamat")));
             cur.moveToNext();
             i++;
         }

@@ -1,9 +1,11 @@
 package com.example.kontak;
 
 public class kontak {
-    public kontak (String nama, String nohp){
+
+    public kontak (String nama, String nohp, String alamat){
         this.nama = nama;
         this.nohp = nohp;
+        this.alamat = alamat;
     }
 
     public String getNama() {
@@ -19,9 +21,17 @@ public class kontak {
     }
 
     public void setNohp(String nohp) {
+
         this.nohp = nohp;
+    }
+
+    public String getAlamat(){ return alamat; }
+
+    public void setAlamat(String alamat){
+        this.alamat = alamat;
     }
 
     private String nama;
     private String nohp;
+    private String alamat;
 }
