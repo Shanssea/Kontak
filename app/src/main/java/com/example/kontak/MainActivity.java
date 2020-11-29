@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -19,7 +20,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView lv;
     private ImageView add;
     private kontakAdapter kAdapter;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.listView);
         add = (ImageView) findViewById(R.id.add);
         add.setOnClickListener(operasi);
+        lv.setOnItemClickListener(this);
 
 //        ArrayList<kontak> listKontak = new ArrayList<kontak>();
         ArrayList<kontak> listKontak = new ArrayList<kontak>();
@@ -63,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(this,"ok", Toast.LENGTH_SHORT).show();
+    }
 
     private void add_item(String nm, String hp){
         ContentValues datanya = new ContentValues();
@@ -121,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
             i++;
         }
     }
+
 
 //    private void delete_kontak(long id){
 //        String string =String.valueOf(id);

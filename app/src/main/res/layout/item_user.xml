@@ -5,9 +5,9 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:columnCount="5"
-        >
+        android:paddingHorizontal="10dp">
 
         <ImageView
             android:id="@+id/img"
@@ -24,15 +24,9 @@
             android:text="Nama"
             android:textSize="20dp"
             android:gravity="center_vertical"
-            android:layout_columnWeight="2"/>
+            android:layout_columnWeight="4"/>
 
-        <TextView
-            android:id="@+id/tnohp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/tNama"
-            android:text="No Hp"
-            android:textSize="20dp"
-            android:layout_columnWeight="2"/>
+
+
     </GridLayout>
 </RelativeLayout>
