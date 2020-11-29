@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 //        Toast.makeText(getApplication(),itemNama+itemAlamat+itemHp, Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(getApplicationContext(), SingleActivity.class);
+        Intent intent = new Intent(MainActivity.this, SingleActivity.class);
         Bundle extras = new Bundle();
         extras.putString("Nama", itemNama);
         extras.putString("Hp", itemHp);

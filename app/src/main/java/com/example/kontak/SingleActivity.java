@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class SingleActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -82,6 +83,7 @@ public class SingleActivity extends AppCompatActivity implements OnMapReadyCallb
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
