@@ -31,7 +31,7 @@ public class kontakAdapter extends ArrayAdapter {
             ConvertView = LayoutInflater.from(getContext()).
                     inflate(R.layout.item_user,parent,false);
             viewKontak.nama = (TextView) ConvertView.findViewById(R.id.tNama);
-            viewKontak.nohp = (TextView) ConvertView.findViewById(R.id.tnohp);
+//            viewKontak.nohp = (TextView) ConvertView.findViewById(R.id.tnohp);
 
             ConvertView.setTag(viewKontak);
 
@@ -40,7 +40,7 @@ public class kontakAdapter extends ArrayAdapter {
             viewKontak = (ViewHolder) ConvertView.getTag();
         }
         viewKontak.nama.setText(dtkontak.getNama());
-        viewKontak.nohp.setText(dtkontak.getNohp());
+//        viewKontak.nohp.setText(dtkontak.getNohp());
         return ConvertView;
     }
 

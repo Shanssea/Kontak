@@ -19,13 +19,13 @@
         android:text="Nama"
         android:textSize="20sp"
         android:gravity="center_vertical"
-        android:layout_columnWeight="2"/>
+        android:layout_columnWeight="4"/>
 
-    <TextView
-        android:id="@+id/tnohp"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:text="No Hp"
-        android:textSize="20sp"
-        android:layout_columnWeight="2"/>
+<!--    <TextView-->
+<!--        android:id="@+id/tnohp"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="No Hp"-->
+<!--        android:textSize="20sp"-->
+<!--        android:layout_columnWeight="2"/>-->
 </GridLayout>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         };
 
         dbku = dbopen.getWritableDatabase();
-        dbku.execSQL("Create table if not exists kontak(nama TEXT, nohp TEXT);");
+        dbku.execSQL("Create table if not exists kontak(nama TEXT, nohp TEXT, alamat TEXT);");
         ambildata();
     }
 
@@ -68,7 +69,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(this,"ok", Toast.LENGTH_SHORT).show();
+        Intent detail = new Intent(view.getContext(), DetailActivity.class);
+        startActivityForResult(detail, 0);
+
     }
 
     private void add_item(String nm, String hp){
