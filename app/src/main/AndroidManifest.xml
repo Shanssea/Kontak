@@ -30,7 +30,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA5usGztqrnmg3_Cnf2u625Sj2t2FcD7aI" />
+            android:value="AIzaSyDqBvPHi5Cx6pyfSt8AOUlJeYcyyiUCJoM" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -39,12 +39,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SingleActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".SingleActivity" />
     </application>
 
 </manifest>

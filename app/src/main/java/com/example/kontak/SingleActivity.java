@@ -1,6 +1,7 @@
 package com.example.kontak;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -38,6 +40,7 @@ public class SingleActivity extends AppCompatActivity implements OnMapReadyCallb
     private GoogleMap mMap;
 
     private double latHere, lngHere, lat, lng;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
 
     @Override
@@ -83,7 +86,7 @@ public class SingleActivity extends AppCompatActivity implements OnMapReadyCallb
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        enableMyLocation();
         Geocoder g = new Geocoder(getBaseContext());
 
         try {
@@ -93,26 +96,50 @@ public class SingleActivity extends AppCompatActivity implements OnMapReadyCallb
 //            String nemuAlamat = address.getAddressLine(0);
             lat = address.getLatitude();
             lng = address.getLongitude();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         LatLng kontakLoc = new LatLng(lat, lng);
         mMap.addMarker(new MarkerOptions().position(kontakLoc).title("Marker in contact's location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(kontakLoc, 10));
-    }
 
-    private void cari(){
 
     }
 
-    private class lokasiListener implements LocationListener{
+    private void enableMyLocation() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            if (mMap != null) {
+                mMap.setMyLocationEnabled(true);
+            }
+        } else {
+            // Permission to access the location is missing. Show rationale and request permission
+            PermissionUtils.requestPermission(this, LOCATION_PERMISSION_REQUEST_CODE,
+                    Manifest.permission.ACCESS_FINE_LOCATION, true);
+        }
+    }
+
+    private void cari() {
+
+    }
+
+    private class lokasiListener implements LocationListener {
+        @SuppressLint("DefaultLocale")
         @Override
         public void onLocationChanged(@NonNull Location location) {
             latHere = location.getLatitude();
             lngHere = location.getLongitude();
-            Toast.makeText(getBaseContext(),"GPS capture", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "GPS capture", Toast.LENGTH_LONG).show();
+
+            Location locTujuan = new Location("Tujuan");
+            locTujuan.setLatitude(lat);
+            locTujuan.setLongitude(lng);
+
+            Location myLoc = new Location("myLocation");
+            myLoc.setLatitude(latHere);
+            myLoc.setLongitude(lngHere);
+            Double distance = (double) myLoc.distanceTo(locTujuan);
+            Toast.makeText(getBaseContext(), "jarak : " + String.format("%.2f", distance) + " meter", Toast.LENGTH_LONG).show();
         }
 
 
