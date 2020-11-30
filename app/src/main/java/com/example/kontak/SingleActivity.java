@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class SingleActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private TextView txtNama, txtNomor, txtAlamat;
+    private TextView txtNama, txtNomor, txtAlamat, txtJarak;
     private String nama, hp, alamat;
 
     private LocationManager lm;
@@ -105,7 +105,6 @@ public class SingleActivity extends AppCompatActivity implements OnMapReadyCallb
         mMap.addMarker(new MarkerOptions().position(kontakLoc).title("Marker in contact's location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(kontakLoc, 10));
 
-
     }
 
     private void enableMyLocation() {
@@ -141,7 +140,11 @@ public class SingleActivity extends AppCompatActivity implements OnMapReadyCallb
             myLoc.setLatitude(latHere);
             myLoc.setLongitude(lngHere);
             Double distance = (double) myLoc.distanceTo(locTujuan);
-            Toast.makeText(getBaseContext(), "jarak : " + String.format("%.2f", distance) + " meter", Toast.LENGTH_LONG).show();
+
+            txtJarak = findViewById(R.id.txtJarak);
+            txtJarak.setText(String.format("%.2f", distance) + " meter");
+
+//            Toast.makeText(getBaseContext(), "jarak : " + String.format("%.2f", distance) + " meter", Toast.LENGTH_LONG).show();
         }
 
 
